@@ -14,8 +14,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
+
 - (IBAction)onTap:(UITapGestureRecognizer *)sender;
 - (void) updateValues;
+- (void) updateSegmentedControl;
+- (float) getTipPercentage;
 
 @end
 
@@ -30,7 +33,9 @@
     self.custom = @"15";
     self.maximum = @"20";
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateControl:) name:@"update_percentage" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateSegmentedControl:)
+                                                 name:@"update_percentage" object:nil];
     
     [self updateSegmentedControl];
     [self updateValues];
@@ -63,7 +68,6 @@
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
-    
 }
 
 - (float) getTipPercentage {
@@ -79,24 +83,23 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSLog(@"prepareForSegue is called");
     
-    if ([segue.identifier isEqualToString:@"showSetting"]) {
+    if ([segue.identifier isEqualToString:@"showSettings"]) {
+        NSLog(@"showSetting Seg is called");
+
         SettingViewController *destViewController = segue.destinationViewController;
 
         destViewController.minimum = self.minimum;
         destViewController.custom = self.custom;
         destViewController.maximum = self.maximum;
-        
-        NSLog(@"Seg is called");
     }
 }
 
-- (void) updateControl:(NSNotification *) obj{
-    //lets say you are sending string as object
-    NSArray *something=(NSArray *) [obj object];
+- (void) updateSegmentedControl:(NSNotification *) obj{
+    NSArray *sharedData=(NSArray *) [obj object];
     
-    self.minimum = something[0];
-    self.custom = something[1];
-    self.maximum = something[2];
+    self.minimum = sharedData[0];
+    self.custom = sharedData[1];
+    self.maximum = sharedData[2];
     
     [self updateSegmentedControl];
     [self updateValues];

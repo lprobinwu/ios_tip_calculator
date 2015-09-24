@@ -73,9 +73,9 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="rJJ-cE-uSi">
-                        <barButtonItem key="rightBarButtonItem" title="Setting" id="4M2-hc-BDG">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="4M2-hc-BDG">
                             <connections>
-                                <segue destination="2JU-hK-496" kind="push" identifier="showSetting" id="TCG-VE-kpg"/>
+                                <segue destination="2JU-hK-496" kind="push" identifier="showSettings" id="TCG-VE-kpg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -95,7 +95,7 @@
             </objects>
             <point key="canvasLocation" x="978" y="509"/>
         </scene>
-        <!--Setting-->
+        <!--Settings-->
         <scene sceneID="ae9-g1-mVp">
             <objects>
                 <viewController id="2JU-hK-496" customClass="SettingViewController" sceneMemberID="viewController">
@@ -153,7 +153,7 @@
                             <outletCollection property="gestureRecognizers" destination="Qgv-FH-pet" appends="YES" id="YTx-5J-oKn"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Setting" id="Yad-SU-axK"/>
+                    <navigationItem key="navigationItem" title="Settings" id="Yad-SU-axK"/>
                     <connections>
                         <outlet property="customTextField" destination="hTb-mW-Mm2" id="kuX-0C-wQs"/>
                         <outlet property="maximumTextField" destination="N4N-C8-VQt" id="ccm-wT-jPL"/>

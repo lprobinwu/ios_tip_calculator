@@ -15,6 +15,7 @@
 		8329E0FF1BB1B6DB000347E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8329E0FD1BB1B6DB000347E1 /* LaunchScreen.xib */; };
 		8329E10B1BB1B6DB000347E1 /* tipcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329E10A1BB1B6DB000347E1 /* tipcalculatorTests.m */; };
 		83814C1D1BB30A0B000114D8 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83814C1C1BB30A0B000114D8 /* SettingViewController.m */; };
+		83814C1F1BB467B0000114D8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 83814C1E1BB467B0000114D8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		8329E10A1BB1B6DB000347E1 /* tipcalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tipcalculatorTests.m; sourceTree = "<group>"; };
 		83814C1A1BB30877000114D8 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		83814C1C1BB30A0B000114D8 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		83814C1E1BB467B0000114D8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		8329E0E21BB1B6DA000347E1 = {
 			isa = PBXGroup;
 			children = (
+				83814C1E1BB467B0000114D8 /* README.md */,
 				8329E0ED1BB1B6DB000347E1 /* tipcalculator */,
 				8329E1071BB1B6DB000347E1 /* tipcalculatorTests */,
 				8329E0EC1BB1B6DB000347E1 /* Products */,
@@ -226,6 +229,7 @@
 			files = (
 				8329E0F71BB1B6DB000347E1 /* TipViewController.m in Sources */,
 				8329E0F41BB1B6DB000347E1 /* AppDelegate.m in Sources */,
+				83814C1F1BB467B0000114D8 /* README.md in Sources */,
 				8329E0F11BB1B6DB000347E1 /* main.m in Sources */,
 				83814C1D1BB30A0B000114D8 /* SettingViewController.m in Sources */,
 			);
