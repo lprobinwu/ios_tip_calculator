@@ -21,7 +21,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"Settings View is Loaded");
+    
     [self initializeTextFields];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Settings view will appear");
+    
+    [self.minimumTextField becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,8 +37,8 @@
 }
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender {
-    NSLog(@"onTap is called");
-    [self.view endEditing:YES];
+    NSLog(@"Settings View onTap is called");
+    
     [self updateValues];
 }
 
@@ -54,9 +61,10 @@
         NSLog(@"SettingViewController will be popped off the stack.");
         // Implement your save or any other code... shouldn't be async/long tasks
         
-        NSArray *sharedData = @[self.minimum, self.custom, self.maximum];
+        // Use NSNotificationCenter to send the percentage data to TipViewController
+        NSArray *sharedPercentages = @[self.minimum, self.custom, self.maximum];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"update_percentage" object:sharedData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"update_percentage" object:sharedPercentages];
     }
 }
 

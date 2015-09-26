@@ -14,5 +14,7 @@
 @property (nonatomic, strong) NSString *custom;
 @property (nonatomic, strong) NSString *maximum;
 
+@property (nonatomic, strong) NSString *billAmountInString;
+
 @end
 

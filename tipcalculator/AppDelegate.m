@@ -7,9 +7,14 @@
 //
 
 #import "AppDelegate.h"
-//#import "TipViewController.h"
+#import "TipViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic) TipViewController *tipViewController;
+@property (nonatomic) NSUserDefaults *userDefaults;
+
+- (void)setLastValues;
 
 @end
 
@@ -18,9 +23,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    TipViewController *tipViewController = [[TipViewController alloc]init];
-//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tipViewController];
-//    self.window.rootViewController = navigationController;
+    
+    NSLog(@"application didFinishLaunchingWithOptions");
     
     return YES;
 }
@@ -28,6 +32,9 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+    // set the last bill amount and date time
+    [self setLastValues];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -45,6 +52,26 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+// Set the last bill amount and last access data
+- (void)setLastValues {
+    NSLog(@"AppDelegate setLastValues");
+    self.userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [self.userDefaults setObject:self.tipViewController.billAmountInString forKey:@"lastBillAmount"];
+    [self.userDefaults setObject:[NSDate date] forKey:@"lastAccessedDate"];
+    [self.userDefaults synchronize];
+}
+
+// Register TipViewController here so that we can set the last bill amount before application resign active
+- (void)registerViewController:(NSString *)name controller:(UIViewController *)controller {
+    NSLog(@"registerViewController");
+    
+    if ([name isEqualToString:@"tip_view_controller"]) {
+        self.tipViewController = (TipViewController *)controller;
+    }
+    
 }
 
 @end
