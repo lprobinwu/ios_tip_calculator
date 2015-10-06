@@ -14,6 +14,8 @@
 		8329E0FC1BB1B6DB000347E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8329E0FB1BB1B6DB000347E1 /* Images.xcassets */; };
 		8329E0FF1BB1B6DB000347E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8329E0FD1BB1B6DB000347E1 /* LaunchScreen.xib */; };
 		8329E10B1BB1B6DB000347E1 /* tipcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329E10A1BB1B6DB000347E1 /* tipcalculatorTests.m */; };
+		835F2B901BC38ED6008AB1BD /* TipModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F2B8F1BC38ED6008AB1BD /* TipModel.m */; settings = {ASSET_TAGS = (); }; };
+		835F2B931BC4414F008AB1BD /* TipSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 835F2B921BC4414F008AB1BD /* TipSettingModel.m */; settings = {ASSET_TAGS = (); }; };
 		83814C1D1BB30A0B000114D8 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83814C1C1BB30A0B000114D8 /* SettingViewController.m */; };
 		83814C1F1BB467B0000114D8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 83814C1E1BB467B0000114D8 /* README.md */; };
 		83C44EA91BC0DFE3006FA347 /* RegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44EA81BC0DFE3006FA347 /* RegionTableViewController.m */; settings = {ASSET_TAGS = (); }; };
@@ -43,6 +45,10 @@
 		8329E1041BB1B6DB000347E1 /* tipcalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tipcalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8329E1091BB1B6DB000347E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8329E10A1BB1B6DB000347E1 /* tipcalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tipcalculatorTests.m; sourceTree = "<group>"; };
+		835F2B8E1BC38ED6008AB1BD /* TipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipModel.h; sourceTree = "<group>"; };
+		835F2B8F1BC38ED6008AB1BD /* TipModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipModel.m; sourceTree = "<group>"; };
+		835F2B911BC4414F008AB1BD /* TipSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipSettingModel.h; sourceTree = "<group>"; };
+		835F2B921BC4414F008AB1BD /* TipSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipSettingModel.m; sourceTree = "<group>"; };
 		83814C1A1BB30877000114D8 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		83814C1C1BB30A0B000114D8 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		83814C1E1BB467B0000114D8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -92,8 +98,12 @@
 			children = (
 				8329E0F21BB1B6DB000347E1 /* AppDelegate.h */,
 				8329E0F31BB1B6DB000347E1 /* AppDelegate.m */,
+				835F2B8E1BC38ED6008AB1BD /* TipModel.h */,
+				835F2B8F1BC38ED6008AB1BD /* TipModel.m */,
 				8329E0F51BB1B6DB000347E1 /* TipViewController.h */,
 				8329E0F61BB1B6DB000347E1 /* TipViewController.m */,
+				835F2B911BC4414F008AB1BD /* TipSettingModel.h */,
+				835F2B921BC4414F008AB1BD /* TipSettingModel.m */,
 				83814C1A1BB30877000114D8 /* SettingViewController.h */,
 				83814C1C1BB30A0B000114D8 /* SettingViewController.m */,
 				83C44EA71BC0DFE3006FA347 /* RegionTableViewController.h */,
@@ -176,7 +186,7 @@
 		8329E0E31BB1B6DA000347E1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Robin Wu";
 				TargetAttributes = {
 					8329E0EA1BB1B6DB000347E1 = {
@@ -232,9 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				835F2B931BC4414F008AB1BD /* TipSettingModel.m in Sources */,
 				8329E0F71BB1B6DB000347E1 /* TipViewController.m in Sources */,
 				83C44EA91BC0DFE3006FA347 /* RegionTableViewController.m in Sources */,
 				8329E0F41BB1B6DB000347E1 /* AppDelegate.m in Sources */,
+				835F2B901BC38ED6008AB1BD /* TipModel.m in Sources */,
 				83814C1F1BB467B0000114D8 /* README.md in Sources */,
 				8329E0F11BB1B6DB000347E1 /* main.m in Sources */,
 				83814C1D1BB30A0B000114D8 /* SettingViewController.m in Sources */,
@@ -299,6 +311,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -362,6 +375,7 @@
 				INFOPLIST_FILE = tipcalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.groupon.robinwu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -373,6 +387,7 @@
 				INFOPLIST_FILE = tipcalculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.groupon.robinwu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -391,6 +406,7 @@
 				);
 				INFOPLIST_FILE = tipcalculatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.groupon.robinwu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tipcalculator.app/tipcalculator";
 			};
@@ -406,6 +422,7 @@
 				);
 				INFOPLIST_FILE = tipcalculatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.groupon.robinwu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tipcalculator.app/tipcalculator";
 			};

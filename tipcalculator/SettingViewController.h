@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TipSettingModel.h"
 
 @interface SettingViewController : UITableViewController
 
@@ -16,11 +17,12 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *themeControl;
 @property (weak, nonatomic) IBOutlet UILabel *regionLabel;
 
-@property (nonatomic, strong) NSString *minimum;
-@property (nonatomic, strong) NSString *custom;
-@property (nonatomic, strong) NSString *maximum;
+@property (nonatomic, strong) TipSettingModel *tipSettingModel;
 
-@property (nonatomic, strong) NSString *theme;
-@property (nonatomic, strong) NSString *region;
+- (void) initModelWithMinimum:(NSString *)minimum
+                       custom:(NSString *)custom
+                      maximum:(NSString *)maximum
+                        theme:(NSString *)theme
+                       region:(NSString *)region;
 
 @end

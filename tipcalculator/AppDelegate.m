@@ -22,7 +22,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     
     NSLog(@"application didFinishLaunchingWithOptions");
     
@@ -59,7 +58,7 @@
     NSLog(@"AppDelegate setLastValues");
     self.userDefaults = [NSUserDefaults standardUserDefaults];
     
-    [self.userDefaults setObject:self.tipViewController.billAmountInString forKey:@"lastBillAmount"];
+    [self.userDefaults setObject:self.tipViewController.tipModel.bill forKey:@"lastBillAmount"];
     [self.userDefaults setObject:[NSDate date] forKey:@"lastAccessedDate"];
     [self.userDefaults synchronize];
 }
@@ -70,8 +69,7 @@
     
     if ([name isEqualToString:@"tip_view_controller"]) {
         self.tipViewController = (TipViewController *)controller;
-    }
-    
+    }    
 }
 
 @end
