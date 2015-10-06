@@ -16,13 +16,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipControl;
+@property (weak, nonatomic) IBOutlet UIView *secondView;
 
 @property (nonatomic) NSUserDefaults *userDefaults;
 
 - (IBAction)onTap:(UITapGestureRecognizer *)sender;
+- (IBAction)billEditingChanged:(UITextField *)sender;
+
 - (void) setLastValues;
 - (void) updateValues;
-- (void) updateSegmentedControl;
+- (void) updateSegmentedControls:(NSNotification *)obj;
 - (float) getTipPercentage;
 
 @end
@@ -34,6 +37,20 @@
     // Do any additional setup after loading the view, typically from a nib.
     NSLog(@"Tip View is Loaded");
     
+    self.regionDictionary = @{
+                         @"Canada" : @"en_CA",
+                         @"United States" : @"en_US",
+                         @"United Kingdom" : @"en_GB",
+                         @"Germany" : @"de_DE",
+                         };
+
+    self.regionPlaceHolderDictionary = @{
+                              @"Canada" : @"$",
+                              @"United States" : @"$",
+                              @"United Kingdom" : @"£",
+                              @"Germany" : @"€",
+                              };
+
     // Load Settings
     self.userDefaults = [NSUserDefaults standardUserDefaults];
     [self initUserDefaultsIfNotExists];
@@ -41,24 +58,34 @@
     [self setLastValues];
     
     self.billTextField.text = self.billAmountInString;
-
+    
+    self.secondView.hidden = true;
+    
     [self updateValues];
     
     // used for update percentages when settings view controller closes
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateSegmentedControl:)
+                                             selector:@selector(updateSegmentedControls:)
                                                  name:@"update_percentage" object:nil];
     
     // register this Tip View Controller to App Delegate
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate registerViewController:@"tip_view_controller" controller:self];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Tip view will appear");
     
     [self.billTextField becomeFirstResponder];
+    
+    if ([self.theme isEqualToString:@"Light"]) {
+        // Light
+        self.view.backgroundColor = [UIColor colorWithRed:(255/255.0) green:(204/255.0) blue:(255/255.0) alpha:1];
+    } else {
+        // Dark
+        self.view.backgroundColor = [UIColor colorWithRed:(204/255.0) green:(102/255.0) blue:(0/255.0) alpha:1];
+    }
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -86,7 +113,12 @@
     if ([self.userDefaults stringForKey:@"selectedSegmentIndexDefault"] == nil) {
         [self.userDefaults setInteger:1 forKey:@"selectedSegmentIndexDefault"];
     }
-
+    if ([self.userDefaults stringForKey:@"themeDefault"] == nil) {
+        [self.userDefaults setObject:@"Light" forKey:@"themeDefault"];
+    }
+    if ([self.userDefaults stringForKey:@"regionDefault"] == nil) {
+        [self.userDefaults setObject:@"United States" forKey:@"regionDefault"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,6 +130,53 @@
     NSLog(@"TipViewController onTap is called");
     
     [self updateValues];
+    
+    if(self.secondView.hidden == true)
+    {
+        self.secondView.hidden = false;
+        [UIView animateWithDuration:1.0
+                              delay:1.0
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^ {
+                             self.secondView.alpha = 1.0;
+                         } completion:^(BOOL finished) {
+                             
+                         }];
+    }
+}
+
+- (IBAction)billEditingChanged:(UITextField *)sender {
+    NSLog(@"Tip view Controller billEditingChanged");
+    
+    if ([self.billTextField.text isEqual:@""]) {
+        if(self.secondView.hidden == false)
+        {
+            self.secondView.hidden = true;
+            [UIView animateWithDuration:1.0
+                                  delay:1.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^ {
+                                 self.secondView.alpha = 0.0;
+                             } completion:^(BOOL finished) {
+                                 
+                             }];
+        }
+    } else {
+        if(self.secondView.hidden == true)
+        {
+            self.secondView.hidden = false;
+            [UIView animateWithDuration:1.0
+                                  delay:1.0
+                                options:UIViewAnimationOptionCurveEaseInOut
+                             animations:^ {
+                                 self.secondView.alpha = 1.0;
+                             } completion:^(BOOL finished) {
+                                 
+                             }];
+        }
+
+        [self updateValues];
+    }
 }
 
 - (void) updateSegmentedControl {
@@ -111,6 +190,9 @@
     self.minimum = [self.userDefaults stringForKey:@"minimumPercentDefault"];
     self.custom = [self.userDefaults stringForKey:@"customPercentDefault"];
     self.maximum = [self.userDefaults stringForKey:@"maximumPercentDefault"];
+    
+    self.theme = [self.userDefaults stringForKey:@"themeDefault"];
+    self.region = [self.userDefaults stringForKey:@"regionDefault"];
     
     [self updateSegmentedControl];
     
@@ -128,6 +210,9 @@
 }
 
 - (void) updateValues {
+    NSString *placeHolderString = (NSString *) [self.regionPlaceHolderDictionary objectForKey:self.region];
+    self.billTextField.placeholder = placeHolderString;
+    
     self.billAmountInString = self.billTextField.text;
     
     float billAmount = [self.billTextField.text floatValue];
@@ -138,12 +223,17 @@
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+
+    NSString *localeString = (NSString *) [self.regionDictionary objectForKey:self.region];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localeString];
+    [numberFormatter setLocale:locale];
     
     self.tipLabel.text = [numberFormatter stringFromNumber:[[NSNumber alloc] initWithFloat:tipAmount]];
     self.totalLabel.text = [numberFormatter stringFromNumber:[[NSNumber alloc] initWithFloat:totalAmount]];
     
     [self.userDefaults setInteger:self.tipControl.selectedSegmentIndex forKey:@"selectedSegmentIndexDefault"];
     [self.userDefaults synchronize];
+    
 }
 
 - (float) getTipPercentage {
@@ -167,19 +257,25 @@
         destViewController.minimum = self.minimum;
         destViewController.custom = self.custom;
         destViewController.maximum = self.maximum;
+        destViewController.theme = self.theme;
+        destViewController.region = self.region;
     }
 }
 
-- (void) updateSegmentedControl:(NSNotification *) obj{
+- (void) updateSegmentedControls:(NSNotification *) obj{
     NSArray *sharedData=(NSArray *) [obj object];
     
     self.minimum = sharedData[0];
     self.custom = sharedData[1];
     self.maximum = sharedData[2];
+    self.theme = sharedData[3];
+    self.region = sharedData[4];
     
     [self.userDefaults setObject:self.minimum forKey:@"minimumPercentDefault"];
     [self.userDefaults setObject:self.custom forKey:@"customPercentDefault"];
     [self.userDefaults setObject:self.maximum forKey:@"maximumPercentDefault"];
+    [self.userDefaults setObject:self.theme forKey:@"themeDefault"];
+    [self.userDefaults setObject:self.region forKey:@"regionDefault"];
     [self.userDefaults synchronize];
     
     [self updateSegmentedControl];

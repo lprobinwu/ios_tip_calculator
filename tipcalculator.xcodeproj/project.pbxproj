@@ -16,6 +16,7 @@
 		8329E10B1BB1B6DB000347E1 /* tipcalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8329E10A1BB1B6DB000347E1 /* tipcalculatorTests.m */; };
 		83814C1D1BB30A0B000114D8 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83814C1C1BB30A0B000114D8 /* SettingViewController.m */; };
 		83814C1F1BB467B0000114D8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 83814C1E1BB467B0000114D8 /* README.md */; };
+		83C44EA91BC0DFE3006FA347 /* RegionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C44EA81BC0DFE3006FA347 /* RegionTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		83814C1A1BB30877000114D8 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		83814C1C1BB30A0B000114D8 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		83814C1E1BB467B0000114D8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		83C44EA71BC0DFE3006FA347 /* RegionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionTableViewController.h; sourceTree = "<group>"; };
+		83C44EA81BC0DFE3006FA347 /* RegionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				8329E0F61BB1B6DB000347E1 /* TipViewController.m */,
 				83814C1A1BB30877000114D8 /* SettingViewController.h */,
 				83814C1C1BB30A0B000114D8 /* SettingViewController.m */,
+				83C44EA71BC0DFE3006FA347 /* RegionTableViewController.h */,
+				83C44EA81BC0DFE3006FA347 /* RegionTableViewController.m */,
 				8329E0F81BB1B6DB000347E1 /* Main.storyboard */,
 				8329E0FB1BB1B6DB000347E1 /* Images.xcassets */,
 				8329E0FD1BB1B6DB000347E1 /* LaunchScreen.xib */,
@@ -228,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8329E0F71BB1B6DB000347E1 /* TipViewController.m in Sources */,
+				83C44EA91BC0DFE3006FA347 /* RegionTableViewController.m in Sources */,
 				8329E0F41BB1B6DB000347E1 /* AppDelegate.m in Sources */,
 				83814C1F1BB467B0000114D8 /* README.md in Sources */,
 				8329E0F11BB1B6DB000347E1 /* main.m in Sources */,

@@ -8,14 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingViewController : UIViewController
+@interface SettingViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *minimumTextField;
 @property (weak, nonatomic) IBOutlet UITextField *customTextField;
 @property (weak, nonatomic) IBOutlet UITextField *maximumTextField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *themeControl;
+@property (weak, nonatomic) IBOutlet UILabel *regionLabel;
 
 @property (nonatomic, strong) NSString *minimum;
 @property (nonatomic, strong) NSString *custom;
 @property (nonatomic, strong) NSString *maximum;
+
+@property (nonatomic, strong) NSString *theme;
+@property (nonatomic, strong) NSString *region;
 
 @end

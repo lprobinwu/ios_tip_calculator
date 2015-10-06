@@ -9,12 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface TipViewController : UIViewController
-
 @property (nonatomic, strong) NSString *minimum;
 @property (nonatomic, strong) NSString *custom;
 @property (nonatomic, strong) NSString *maximum;
 
+@property (nonatomic, strong) NSString *theme;
+@property (nonatomic, strong) NSString *region;
+
 @property (nonatomic, strong) NSString *billAmountInString;
+
+@property (nonatomic, strong) NSDictionary *regionDictionary;
+@property (nonatomic, strong) NSDictionary *regionPlaceHolderDictionary;
 
 @end
 
