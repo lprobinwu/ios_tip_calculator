@@ -18,9 +18,14 @@
     [super viewDidLoad];
     
     self.regions = @[@"United States", @"Canada", @"United Kingdom", @"Germany"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"Region table view will appear");
     
     [self.tableView reloadData];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

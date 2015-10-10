@@ -34,12 +34,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateRegionFromNotification:)
                                                  name:@"update_region" object:nil];
-
-    [self updateViewFromModel];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Settings view will appear");
+    
+    [self updateViewFromModel];
 }
 
 - (void)didReceiveMemoryWarning {

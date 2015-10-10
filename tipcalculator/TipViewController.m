@@ -64,13 +64,6 @@
     self.userDefaults = [NSUserDefaults standardUserDefaults];
     
     [self setLastValues];
-
-    self.billTextField.text = self.tipModel.bill;
-    [self.tipControl setSelectedSegmentIndex:self.tipModel.percentageIndex];
-    
-    self.secondView.hidden = true;
-    
-    [self updateViewFromModel];
     
     // used for update percentages when settings view controller closes
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -84,6 +77,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"Tip view will appear");
+    
+    self.billTextField.text = self.tipModel.bill;
+    [self.tipControl setSelectedSegmentIndex:self.tipModel.percentageIndex];
+    
+    self.secondView.hidden = true;
+    
+    [self updateViewFromModel];
     
     [self.billTextField becomeFirstResponder];
     
